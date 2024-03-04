@@ -3,13 +3,23 @@
   "version": "0.0.0",
   "description": "A Project exploring the capabilities of WebGPU for ray tracing.",
   "author": "Johannes Lentzsch",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "npm i && npm run serve",
+    "start": "npm i && npm run build && npm run serve",
+    "build":  "tsc",
+    "build:watch": "tsc -w",
     "serve": "http-server"
   },
   "private": true,
   "keywords": ["Ray Tracing", "WebGPU", "WebGL", "render"],
+  "exports": "./src/index.js",
+  "files": [
+    "src",
+    "*.md"
+  ],
+  "engines": {
+    "node": ">=14.13.1 || >=16.0.0"
+  },
   "dependencies": {
     "http-server": "^14.1.1"
   }
