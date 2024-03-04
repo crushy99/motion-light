@@ -1,28 +1,16 @@
 {
   "name": "motion-light",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "description": "A Project exploring the capabilities of WebGPU for ray tracing.",
+  "author": "Johannes Lentzsch",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint motion-light --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "start": "npm i && npm run serve",
+    "serve": "http-server"
   },
+  "private": true,
+  "keywords": ["Ray Tracing", "WebGPU", "WebGL", "render"],
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.56",
-    "@types/react-dom": "^18.2.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "typescript": "^5.2.2",
-    "vite": "^5.1.4"
+    "http-server": "^14.1.1"
   }
 }
