@@ -6,12 +6,17 @@
   "type": "module",
   "scripts": {
     "start": "npm i && npm run build && npm run serve",
-    "build":  "tsc",
+    "build": "tsc",
     "build:watch": "tsc -w",
     "serve": "http-server"
   },
   "private": true,
-  "keywords": ["Ray Tracing", "WebGPU", "WebGL", "render"],
+  "keywords": [
+    "Ray Tracing",
+    "WebGPU",
+    "WebGL",
+    "render"
+  ],
   "exports": "./src/index.js",
   "files": [
     "src",
@@ -21,6 +26,7 @@
     "node": ">=14.13.1 || >=16.0.0"
   },
   "dependencies": {
+    "@webgpu/types": "^0.1.40",
     "http-server": "^14.1.1"
   }
 }

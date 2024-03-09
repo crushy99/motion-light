@@ -20,6 +20,7 @@
     "lib": ["DOM","ES6","DOM.Iterable","ScriptHost", "ES2016", "ES2017"],
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "types": ["@webgpu/types"],
   },
   "include": [
     "src/**/*"
