@@ -1,4 +1,5 @@
 import { shaders } from "./shaders/shaders.js";
+import { TriangleMesh } from "./meshes/TriangleMesh.js";
 
 const initialize = async () => {
     const canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("ml-canvas");
@@ -12,12 +13,28 @@ const initialize = async () => {
         format: format,
     });
 
+    const triangleMesh = new TriangleMesh(device);
+
+    const bindGroupLayout = device.createBindGroupLayout({
+        entries: [],
+    });
+
+    const bindGroup= device.createBindGroup({
+        layout: bindGroupLayout,
+        entries: [],
+    });
+
+    const pipelineLayout = device.createPipelineLayout({
+        bindGroupLayouts: [bindGroupLayout],
+    });
+
     const pipeline: GPURenderPipeline = device.createRenderPipeline({
         vertex: {
             module: device.createShaderModule({
                 code: shaders,
             }),
             entryPoint: "vs_main",
+            buffers: [triangleMesh.bufferLayout],
         },
         fragment: {
             module: device.createShaderModule({
@@ -46,10 +63,16 @@ const initialize = async () => {
     });
 
     renderPass.setPipeline(pipeline);
+    renderPass.setBindGroup(0, bindGroup);
+    renderPass.setVertexBuffer(0, triangleMesh.buffer);
     renderPass.draw(3, 1, 0, 0);
     renderPass.end();
 
     device.queue.submit([commandEncoder.finish()]);
 }
+
+const canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("ml-canvas");
+canvas.setAttribute("width", window.innerWidth.toString(10));
+canvas.setAttribute("height", window.innerHeight.toString(10));
 
 initialize();
