@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@webgpu/types": "^0.1.40",
+    "gl-matrix": "^3.4.3",
     "http-server": "^14.1.1"
   }
 }
