@@ -1,5 +1,5 @@
 // @ts-ignore
-import { mat4 } from "../../node_modules/gl-matrix/esm/index.js";
+import {mat4} from "../../node_modules/gl-matrix/esm/index.js";
 import {TriangleMesh} from "../meshes/TriangleMesh.js";
 import {shaders} from "../shaders/shaders.js";
 
@@ -101,6 +101,10 @@ export class Renderer {
     }
 
     private render = () => {
+        this.t += 0.01;
+
+        if (this.t > 2 * Math.PI) this.t -= 2 * Math.PI;
+
         const projection = mat4.create();
         mat4.perspective(projection, Math.PI / 4, window.innerWidth / window.innerHeight, 0.1, 10);
 
@@ -132,6 +136,8 @@ export class Renderer {
         renderPass.end();
 
         this.device.queue.submit([commandEncoder.finish()]);
+
+        requestAnimationFrame(this.render);
     }
 
     public initialize = async () => {
